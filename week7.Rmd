@@ -1,0 +1,50 @@
+---
+title: "week7"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week7
+x<-4
+if(x>3){
+  print("dd")
+}else{
+  print("small")
+}
+
+
+
+```{r}
+N<-500
+metasample<-rnorm(N,5,2)
+bmu<-numeric(1000)
+for(i in 1:1000){
+  rndno<-as.integer(runif(N)*N)+1
+  smp<-metasample[rndno]
+  bmu[i]<-mean(smp)
+}
+p<-density(bmu)
+plot(p)
+qq<-quantile(bmu)
+rug(qq,col="red")
+
+
+
+```
+
+```{r}
+N<-1000
+metasample<-rnorm(N,5,2)
+rndno<-as.integer(runif(N)*N)+1
+smp<-metasample[rndno]
+
+hist(metasample)
+lx<-seq(min(metasample),max(metasample),length=10)
+ly<-dnorm(lx,mean(metasample),sd(metasample))
+
+sy<-ly*(diff(lx)[1])*N
+lines(lx,sy)
+```
