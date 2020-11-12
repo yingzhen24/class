@@ -1,0 +1,20 @@
+---
+title: "week9"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#WEEK9
+```{r}
+zscore<-seq(-3,3,0.1)
+pvalues<-pnorm(zscore)
+plot(pvalues,type="1",xaxt="n")
+axis(1,at=which(oo),label="this")
+
+
+oo<-rep(F,lenght(zscore))
+oo[3]<-T
+```
