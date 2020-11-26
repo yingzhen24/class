@@ -1,0 +1,74 @@
+---
+title: "week11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## week11 ##
+
+## 1.矩陣
+```{r}
+mm<-function(rcnt,ccnt,init){
+total<-rcnt*ccnt
+v<-double(total)
+v[1:total]<-init
+rst<-matrix(v,rcnt,ccnt)
+return (rst)
+}
+```
+
+```{r}
+mm(4,3,2)
+```
+##2
+```{r}
+x1<-runif(3)
+x2<-runif(3)
+x3<-runif(3)
+x<-list(x1,x2,x3)
+length(x)
+xx<-c(x1,x2,x3)
+length(xx)
+```
+##3
+```{r}
+myf1<-function(afile){
+  file<-dir()
+  rst<-length(file[file==afile])
+  return(rst>0)
+}
+myf1("mm.R")
+```
+
+
+##4計算裡面元素大於0.5
+
+```{r}
+xx<-function(x){
+  if(is.vector(x)){
+    return(x[x>0.5])
+  }}
+
+xx(runif(10))
+```
+
+##5
+```{r}
+x1<-list(c("a","b"),c("c","d"))
+x<-x1[[1]]
+#typeof(x)
+for(item in x){
+  print(item)
+}
+print("---------")
+x<-x1[1]
+#typeof(x)
+for(item in x){
+  print(item)
+}
+```
+
+
+
