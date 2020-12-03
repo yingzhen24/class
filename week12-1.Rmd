@@ -1,0 +1,20 @@
+---
+title: "week12-1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week12-1
+```{r}
+paste0("a","b") # "a"+"b" ="a`sep`b" ,sep=""
+paste0("a","b",collapse = "------") 
+paste0(c("a","b"),c(1,2))
+paste0("a","b",c(1,2),collapse = "<------->") 
+print("---------")
+paste("a","b") # "a"+"b" ="a`sep`b" ,sep=" "
+```
+- paste0 是paste的簡化版,paste 裡面的參數sep預設為""
+- psate0() ==paste( ,sep="")

@@ -1,0 +1,24 @@
+---
+title: "week12"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week12
+
+```{r}
+mydata<-read.csv("trees91.csv")
+mydata$C <-factor(mydata$C)
+mydata$N <-factor(mydata$N)
+table(mydata$C)
+barplot(table(mydata$C))
+```
+
+```{r}
+mydata1<-read.csv("trees91x.csv",encoding="UTF-8")
+mydata1$`中文`<-factor(mydata1$`中文`)
+table(mydata$`中文`)
+```
