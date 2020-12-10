@@ -1,0 +1,78 @@
+---
+title: "week13"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## practice
+```{r}
+dn<-data()
+str(dn)
+```
+
+```{r}
+attributes(dn)
+```
+
+```{r}
+dn$results
+```
+
+```{r}
+dimnames(dn$results)
+class(dn$results)
+dsname<-dn$results[,"Item"] #dn$results[,3]
+head(dsname)
+```
+
+```{r}
+isDsExists<-function(given){
+  
+  dn<-data()
+  dsname<-dn$results[,"Item"] 
+  rst<-length(dsname[dsname==given])
+  if(rst!=0){
+    return(T)
+  }
+    else{
+      return(F)
+    }
+}
+
+isDsExists("iris")
+```
+
+```{r}
+isDxExists2<-function(given){
+  
+  dn<-data()
+  dsname<-dn$results[,"Item"] 
+  return(any(dsname==given))
+}
+  isDxExists("iris")
+  isDxExists2("XXX")
+
+  
+```
+
+```{r}
+library(DT)
+  dn<-data()
+  dsname<-dn$results[,"Item"] 
+df<-data.frame(dsname)
+
+datatable(cars)
+```
+ 
+
+
+
+
+
+
+
+
+
