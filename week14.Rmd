@@ -1,0 +1,49 @@
+---
+title: "week14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## week14  
+
+
+
+
+
+
+
+```{r}
+library(DT)
+ms<-installed.packages()
+#View(ms)
+fm<-data.frame(ms)
+fm2<-fm[,1:3]
+colnames(fm2)<-c("套件","路徑","版本")
+datatable(fm2,rownames=F)
+
+
+write.csv(fm2,file="c:/week14/foo.csv",row.names = F)
+#輸出csv檔,檔名foo
+```
+
+```{r}
+fm4<-read.csv(file = "c:/week14/foo.csv",as.is=T)
+datatable(fm4)
+```
+
+```{r}
+fm4<-read.csv(file = "c:/week14/foo.csv",as.is=T)
+fm5<-fm4[order(fm4$`版本`),]
+datatable(fm5)
+```
+
+
+
+## change to TZ
+```{r}
+colnames(fm)<-c("身高","體重","性別","比例")
+datatable(fm,rownames=F)
+```
