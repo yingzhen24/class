@@ -1,0 +1,79 @@
+---
+title: "week16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R15
+```{r}
+library("AER")
+data("Journals", package = "AER")
+journals<-Journals[, c("subs","price")]
+journals$citeprice<-Journals$price/Journals$citations
+lm(journals$subs~journals$citeprice)
+lm(subs~citeprice,data = journals)
+```
+
+
+```{r}
+plot(log(subs)~log(citeprice),data = journals)
+```
+
+
+```{r}
+mm<-lm(subs~citeprice,data = journals)
+plot(mm)
+```
+
+```{r}
+Journals<-read.csv("Journals.csv")
+journals<- Journals[,c("subs", "price")]
+journals$citeprice<-Journals$price/Journals$citations
+journals$lsubs<-log(journals$subs)
+journals$lciteprice<-log(journals$citeprice)
+
+plot(lsubs ~ lciteprice, data = journals)
+jour_lm<-lm(lsubs ~ lciteprice,data = journals)
+abline(jour_lm)
+anova(jour_lm)
+linearHypothesis(jour_lm,"lciteprice= -0.5")
+```
+
+
+```{r}
+coef(jour_lm)
+
+confint(jour_lm,level = 0.95)
+```
+
+```{r}
+predict(jour_lm,newdata=data.frame(lciteprice=c(2.11,3)),interval="confidence")
+
+x<-predict(jour_lm,newdata=data.frame(lciteprice=c(2.11,3)),interval="prediction")
+
+```
+
+```{r}
+mydata<-seq(from=-4,to=2,by=0.25)
+jour_pred<-predict(jour_lm,interval="prediction",
+  newdata=data.frame(lciteprice=mydata))
+plot(lsubs~lciteprice,data=journals)
+lines(jour_pred[,1]~mydata,col=1)
+lines(jour_pred[,2]~mydata,col=1,lty=2)
+lines(jour_pred[,3]~mydata,col=1,lty=2)
+```
+
+
+```{r}
+coef(jour_lm)
+confint(jour_lm,level=0.95)
+```
+
+```{r}
+predict(jour_lm,newdata=data.frame(lciteprice=c(2.11,3)),interval="confidence")
+
+x<-predict(jour_lm,newdata=data.frame(lciteprice=c(2.11,3)),interval="prediction")
+```
